@@ -33,6 +33,7 @@ const AppComponent: FC<AppContextPropsType> = ({
 
     return (
         <div className={`${styles.app} + ${colorStyles.app}`}>
+
             <Routes/>
         </div>
     )
