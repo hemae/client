@@ -1,0 +1,40 @@
+.home {
+    height: calc(100vh - 60px - 20px - 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcomeContainer {
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    transition: all 2000ms;
+}
+
+.welcome {
+    font-size: 50px;
+    font-weight: bold;
+    opacity: 0;
+    transition: all 3000ms;
+}
+
+.welcome.active {
+    font-size: 50px;
+    font-weight: bold;
+    opacity: 1;
+}
+
+.slogan {
+    font-size: 18px;
+    opacity: 0;
+    transition: all 5000ms;
+}
+
+.slogan.active {
+    font-size: 18px;
+    opacity: 1;
+}

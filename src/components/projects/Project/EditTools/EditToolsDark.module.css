@@ -1,0 +1,11 @@
+.btn {
+    color: #a6a6a6;
+}
+
+.btn.delete:hover {
+    color: #fa9d9d;
+}
+
+.btn.rename:hover {
+    color: #b7b7ff;
+}

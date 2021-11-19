@@ -1,0 +1,24 @@
+.notification {
+    box-shadow: 0 0 12px #858585;
+    background-color: #dcdcdc;
+}
+
+.btn {
+    background-color: #dcdcdc;
+    color: #a6a6a6;
+}
+
+.btn:hover {
+    color: #a5a5fd;
+    background-color: #c7c7c7;
+}
+
+.btn.disabled {
+    background-color: #eeeded;
+    color: #cecece;
+}
+
+.btn.disabled:hover {
+    background-color: #eeeded;
+    color: #cecece;
+}

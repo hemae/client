@@ -1,0 +1,55 @@
+.header {
+    height: 60px;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid;
+}
+
+.link {
+    padding-right: 15px;
+    padding-left: 15px;
+    font-size: 26px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 150ms;
+    text-decoration: none;
+}
+
+.link a {
+    transition: color 150ms;
+}
+
+.link:hover {
+    height: 58px;
+    border-bottom: 2px solid;
+}
+
+.link.active {
+    height: 58px;
+    border-bottom: 2px solid;
+}
+
+.navBar {
+    display: flex;
+}
+
+.authBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.authBar > div {
+    margin-left: 10px;
+}
+
+.signUp {
+    transition: color 150ms;
+    cursor: pointer;
+}
+

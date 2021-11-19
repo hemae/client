@@ -1,0 +1,12 @@
+.authButton {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid;
+    border-radius: 10px;
+    transition: all 150ms;
+    font-weight: bold;
+    cursor: pointer;
+}
+

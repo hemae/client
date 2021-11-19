@@ -1,0 +1,16 @@
+.switch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 200ms;
+    cursor: pointer;
+}
+
+.toggle {
+
+}
+
+.icon {
+
+}
+

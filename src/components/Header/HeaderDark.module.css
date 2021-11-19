@@ -1,0 +1,23 @@
+.header {
+    border-color: #8dd992;
+}
+
+.header a {
+    color: #ffffff;
+}
+
+.link:hover {
+    border-color: #8dd992;
+}
+
+.link.active {
+    border-color: #8dd992;
+}
+
+.signUp {
+    color: white;
+}
+
+.signUp:hover {
+    color: #9c9cf8;
+}

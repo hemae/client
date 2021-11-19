@@ -1,0 +1,6 @@
+.itemWrapper {
+    transition: all 150ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

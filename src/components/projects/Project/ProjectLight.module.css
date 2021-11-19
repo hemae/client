@@ -1,0 +1,22 @@
+.project {
+    color: #a6a6a6;
+}
+
+.project:hover {
+    color: #b7b7ff;
+}
+
+.btn {
+    color: #a6a6a6;
+    transition: all 150ms;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.btn.delete:hover {
+    color: #fa9d9d;
+}
+
+.btn.rename:hover {
+    color: #b7b7ff;
+}

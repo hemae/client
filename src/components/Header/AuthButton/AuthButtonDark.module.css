@@ -1,0 +1,10 @@
+.authButton {
+    color: #b7b7ff;
+    border-color: #b7b7ff;
+}
+
+.authButton:hover {
+    color: #9c9cf8;
+    border-color: #9c9cf8;
+}
+

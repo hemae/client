@@ -1,0 +1,9 @@
+.itemWrapper {
+    background-color: #1c1c1c;
+    box-shadow: 0 0 12px #888888;
+}
+
+.itemWrapper:hover {
+    box-shadow: 0 0 5px #6c6c6c;
+    background-color: #2f2f2f;
+}

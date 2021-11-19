@@ -1,0 +1,16 @@
+.button {
+    background-color: #262626;
+}
+
+.button:hover {
+    box-shadow: 0 0 5px #000000 !important;
+}
+
+.button.disabled {
+    background-color: #999999!important;
+}
+
+.button.disabled:hover {
+    background-color: #999999;
+    color: #6f6f6f;
+}

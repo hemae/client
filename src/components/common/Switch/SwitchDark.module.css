@@ -1,0 +1,9 @@
+.switch {
+    background-color: #656565;
+    box-shadow: 0 0 6px #a9a9a9;
+    color: #b2d3b4;
+}
+
+.toggle {
+    background-color: #b2d3b4;
+}
