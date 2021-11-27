@@ -29,7 +29,7 @@ const Collection: FC = () => {
                 {currentProject && currentCollection && !!count &&
                 <a
                     className={`${styles.apiBtn} + ${colorStyles.apiBtn}`}
-                    href={`http://workcard/api/client/collections/${currentProject._id}/${currentCollection}/${page}`}
+                    href={`http://workcard.fun/api/client/collections/${currentProject._id}/${currentCollection}/${page}`}
                 >API</a>}
 
             </div>
