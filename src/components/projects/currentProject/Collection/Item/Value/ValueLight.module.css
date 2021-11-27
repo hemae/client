@@ -34,12 +34,20 @@
     color: #f38b00;
 }
 
+.record.hover {
+    background-color: #d9d8d8;
+}
+
 .objectHeader {
     color: #f38b00;
 }
 
-.objectHeader:hover {
-    color: #8c5100;
+.objectHeader.objectHover {
+    color: #00a49f!important;
+}
+
+.objectHeader.hover {
+    color: #e82100;
 }
 
 .keyNumber {

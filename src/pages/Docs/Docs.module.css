@@ -25,11 +25,13 @@
 }
 
 .oneBlock > h1 {
+    cursor: default;
     padding-bottom: 20px;
     border-bottom: 2px solid;
 }
 
 .twoBlock > h2 {
+    cursor: default;
     padding-bottom: 15px;
     border-bottom: 1px solid;
 }
@@ -50,7 +52,12 @@
 }
 
 .threeBlock > h3 {
+    cursor: default;
     margin-top: 40px;
+}
+
+.fourBlock > h4 {
+    cursor: default;
 }
 
 .navbar {

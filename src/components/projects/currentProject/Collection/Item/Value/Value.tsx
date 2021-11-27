@@ -10,9 +10,11 @@ import useWindowDimensions from '../../../../../../hooks/useWindowDimensions'
 type ObjectPropsType = {
     kind: 'Array' | 'Object'
     value: any
-    _key: number | undefined
+    keyNumber: number | undefined
     localIsOpened: boolean
     setLocalIsOpened: (localIsOpened: boolean) => void
+    keyString: string | undefined
+    setIsIAmHover?: (isIAmHover: boolean) => void
 }
 
 const ObjectValue: FC<ObjectPropsType> = (props) => {
@@ -22,11 +24,41 @@ const ObjectValue: FC<ObjectPropsType> = (props) => {
         value,
         localIsOpened,
         setLocalIsOpened,
-        _key
+        keyNumber,
+        keyString,
+        setIsIAmHover
     } = props
 
     const {theme} = useAppSelector(state => state.settingsReducer)
     const colorStyles = require(`./Value${theme}.module.css`)
+
+    const [isBracketsHover, setIsBracketsHover] = useState<boolean>(false)
+    const [isObjectHover, setIsObjectHover] = useState<boolean>(false)
+    const [isChildHover, setIsChildHover] = useState<boolean>(false)
+
+    const onObjectOver = (): void => {
+        // if (!isChildHover) {
+            setIsObjectHover(true)
+            if (setIsIAmHover) {
+                setIsIAmHover(true)
+            }
+        // }
+    }
+
+    const onObjectLeave = (): void => {
+        setIsObjectHover(false)
+        if (setIsIAmHover) {
+            setIsIAmHover(false)
+        }
+    }
+
+    const onBracketsOver = (): void => {
+        setIsBracketsHover(true)
+    }
+
+    const onBracketsLeave = (): void => {
+        setIsBracketsHover(false)
+    }
 
     const onObjectClick = (): void => {
         setLocalIsOpened(!localIsOpened)
@@ -36,38 +68,74 @@ const ObjectValue: FC<ObjectPropsType> = (props) => {
         ? `Array (${value.length}) [${!localIsOpened ? '...]' : ''}`
         : `{${!localIsOpened ? '...}' : ''}`
 
+
+    const averageCharacterWidth = 7
+    const marginLeft = keyString && keyString !== '#' ? -((keyString.length + (kind === 'Array' ? 4 : 0)) * averageCharacterWidth) : 15
+    const downBracketMarginLeft = keyString ? -(keyString.length * averageCharacterWidth + 5) : 0
+
     const renderingJSX: JSX.Element = kind === 'Array'
         ? <>{//@ts-ignore
-            value.map((_value, index) => <Value key={index} value={_value} _key={index}/>)}</>
+            value.map((_value, index) => {
+                return (
+                    <div
+                        key={index}
+                        className={`${styles.record} + ${!keyString && isObjectHover && !isChildHover ? colorStyles.hover : ''}`}
+                        style={{marginLeft: `${marginLeft}px`}}
+                        onMouseOver={onObjectOver}
+                        onMouseLeave={onObjectLeave}
+                    ><Value value={_value} keyNumber={index} setIsIAmHover={setIsChildHover} keyString={'#'}/></div>
+                )
+            })}</>
         : <>{Object.keys(value).map((_key, index) => {
             return (
-                <div key={index} className={styles.record}>
+                <div
+                    key={index}
+                    className={`${styles.record} + ${colorStyles.record} + ${keyString && isObjectHover && !isChildHover ? colorStyles.hover : ''}`}
+                    style={{
+                        marginLeft: `${marginLeft}px`
+                    }}
+                    onMouseOver={onObjectOver}
+                    onMouseLeave={onObjectLeave}
+                >
                     <Key _key={_key}/>
-                    <Value value={value[_key]}/>
+                    <Value value={value[_key]} keyString={_key} setIsIAmHover={setIsChildHover}/>
                 </div>
             )
         })}</>
 
     return (
-        <div className={`${styles.object} + ${colorStyles.object}`}>
-            <div className={`${styles.objectHeader} + ${colorStyles.objectHeader}`}>
-                <KeyNumber _key={_key}/>
-                <div onClick={onObjectClick}>{headerLabel}</div>
+        <div
+            className={`${styles.object} + ${colorStyles.object}`}
+        >
+            <div
+                className={`${styles.objectHeader} + ${colorStyles.objectHeader} + ${isBracketsHover ? colorStyles.hover : ''} + ${keyString && isObjectHover && !isChildHover ? colorStyles.objectHover : ''}`}
+                onMouseOver={onBracketsOver}
+                onMouseLeave={onBracketsLeave}
+                onClick={onObjectClick}
+            >
+                <KeyNumber keyNumber={keyNumber}/>
+                <div>{headerLabel}</div>
             </div>
             {localIsOpened && <>{renderingJSX}</>}
-            {localIsOpened && <div className={`${styles.objectHeader} + ${colorStyles.objectHeader}`}
-                                   onClick={onObjectClick}>{`${kind === 'Array' ? ']' : '}'}`}</div>}
+            {localIsOpened &&
+            <div
+                className={`${styles.objectHeader} + ${colorStyles.objectHeader} + ${isBracketsHover ? colorStyles.hover : ''} + ${keyString && isObjectHover && !isChildHover ? colorStyles.objectHover : ''}`}
+                onClick={onObjectClick}
+                onMouseOver={onBracketsOver}
+                onMouseLeave={onBracketsLeave}
+                style={{marginLeft: `${downBracketMarginLeft}px`}}
+            >{`${kind === 'Array' ? ']' : '}'}`}</div>}
         </div>
     )
 
 }
 
 
-const KeyNumber: FC<{ _key?: number }> = ({_key}) => {
+const KeyNumber: FC<{ keyNumber?: number }> = ({keyNumber}) => {
     const {theme} = useAppSelector(state => state.settingsReducer)
     const colorStyles = require(`./Value${theme}.module.css`)
-    return typeof _key === 'number' ?
-        <div className={`${styles.keyNumber} + ${colorStyles.keyNumber}`}>{`${_key}: `}</div> : <></>
+    return typeof keyNumber === 'number' ?
+        <div className={`${styles.keyNumber} + ${colorStyles.keyNumber}`}>{`${keyNumber}: `}</div> : <></>
 }
 
 
@@ -119,7 +187,7 @@ const Primitive: FC<PrimitivePropsType> = (props) => {
             }}
             title={valueType}
         >
-            <KeyNumber _key={_key}/>
+            <KeyNumber keyNumber={_key}/>
             {isQuotes && '"'}{localIsOpened ? value : renderingValue}{isQuotes && '"'}</div>
     )
 }
@@ -127,11 +195,22 @@ const Primitive: FC<PrimitivePropsType> = (props) => {
 
 type ValuePropsType = {
     value: any
-    _key?: number
+    keyNumber?: number
     isOpened?: boolean
+    keyString?: string
+    childNumber?: number
+    setIsIAmHover?: (isIAmHover: boolean) => void
 }
 
-const Value: FC<ValuePropsType> = ({value, isOpened = false, _key}) => {
+const Value: FC<ValuePropsType> = (props) => {
+
+    const {
+        value,
+        isOpened = false,
+        keyNumber,
+        keyString,
+        setIsIAmHover
+    } = props
 
     const {theme, language} = useAppSelector(state => state.settingsReducer)
     const {width} = useWindowDimensions()
@@ -166,16 +245,18 @@ const Value: FC<ValuePropsType> = ({value, isOpened = false, _key}) => {
                 valueJSX = <ObjectValue
                     kind={kind}
                     value={value}
-                    _key={_key}
+                    keyNumber={keyNumber}
                     localIsOpened={localIsOpened}
                     setLocalIsOpened={setLocalIsOpened}
+                    keyString={keyString}
+                    setIsIAmHover={setIsIAmHover}
                 />
             } catch {
                 valueJSX = (
                     <div
                         className={`${styles.value} + ${colorStyles.null}`}
                         title='null'
-                    ><KeyNumber _key={_key}/>null</div>
+                    ><KeyNumber keyNumber={keyNumber}/>null</div>
                 )
             }
             break
@@ -184,7 +265,7 @@ const Value: FC<ValuePropsType> = ({value, isOpened = false, _key}) => {
                 value={value}
                 valueType={valueType}
                 minValueLength={minValueLength}
-                _key={_key}
+                _key={keyNumber}
                 localIsOpened={localIsOpened}
                 setLocalIsOpened={setLocalIsOpened}
             />

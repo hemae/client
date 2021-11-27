@@ -43,7 +43,11 @@ const Item: FC<ItemPropsType> = ({item}) => {
 
     return (
         <div className={`${styles.item} + ${colorStyles.item}`}>
-            <Value value={item} isOpened={true}/>
+
+            <div className={styles.itemContainer}>
+                <Value value={item} isOpened={true}/>
+            </div>
+
             {authUserData && currentProject && authUserData.id === currentProject.ownerId &&
                 <div
                     className={`${styles.deleteBtn} + ${colorStyles.deleteBtn}`}

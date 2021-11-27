@@ -8,7 +8,11 @@
     padding: 20px;
     transition: all 250ms;
     position: relative;
-   word-break: break-word;
+}
+
+.itemContainer {
+    width: 100%;
+    overflow-x: auto;
 }
 
 .deleteBtn {

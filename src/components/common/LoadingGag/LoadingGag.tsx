@@ -1,5 +1,4 @@
 import React, {FC} from 'react'
-import componentStyles from './Component.module.css'
 import {useAppSelector} from '../../../redux/hooks/redux'
 
 

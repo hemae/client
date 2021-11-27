@@ -30,6 +30,7 @@ const Collection: FC = () => {
                 <a
                     className={`${styles.apiBtn} + ${colorStyles.apiBtn}`}
                     href={`http://workcard.fun/api/client/collections/${currentProject._id}/${currentCollection}/${page}`}
+                    target='_blank'
                 >API</a>}
 
             </div>
@@ -37,7 +38,7 @@ const Collection: FC = () => {
             {items
                 ? items.length === 0
                     ? <div className={`${styles.header} + ${colorStyles.header}`}>{labels.noObjectsYet}</div>
-                    : items.map((item, index) => <Item key={index} item={item}/>)
+                    : <>{items.map((item, index) => <Item key={index} item={item}/>)}</>
                 : <div className={`${styles.header} + ${colorStyles.header}`}>{labels.chooseACollection}</div>}
 
         </div>

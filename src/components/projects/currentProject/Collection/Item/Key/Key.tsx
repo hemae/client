@@ -13,8 +13,10 @@ const Key: FC<KeyPropsType> = ({_key}) => {
     const colorStyles = require(`./Key${theme}.module.css`)
 
     return (
-        <div className={`${styles.key} + ${colorStyles.key}`}>
-            "{_key}":
+        <div
+            className={`${styles.key} + ${colorStyles.key}`}
+        >
+            {_key}:
         </div>
     )
 }

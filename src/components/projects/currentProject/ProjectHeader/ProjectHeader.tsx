@@ -5,10 +5,10 @@ import {useAppDispatch, useAppSelector} from '../../../../redux/hooks/redux'
 import {projectHeaderLabels, ProjectHeaderLabelsType} from './projectHeaderLabels'
 import CopyToClipboard from 'react-copy-to-clipboard'
 import useWindowDimensions from '../../../../hooks/useWindowDimensions'
-import {useHistory} from 'react-router-dom'
 import {LoadingGag} from '../../../common/LoadingGag/LoadingGag'
 import Switch from '../../../common/Switch/Switch'
 import {shareProject} from '../../../../redux/store/reducers/projects/projectsThunkCreators'
+import {NavLink} from 'react-router-dom'
 
 
 const ProjectHeader: FC = () => {
@@ -17,15 +17,10 @@ const ProjectHeader: FC = () => {
     const {token, authUserData} = useAppSelector(state => state.authReducer)
     const {currentProject} = useAppSelector(state => state.projectsReducer)
     const {width} = useWindowDimensions()
-    const history = useHistory()
     const dispatch = useAppDispatch()
 
     const colorStyles = require(`./ProjectHeader${theme}.module.css`)
     const labels: ProjectHeaderLabelsType = projectHeaderLabels[language]
-
-    const onBackClick = (): void => {
-        history.goBack()
-    }
 
     const borderlineWidth = 830
 
@@ -49,16 +44,17 @@ const ProjectHeader: FC = () => {
         <div className={`${styles.header} + ${colorStyles.header}`}>
 
             {currentProject && authUserData && currentProject.ownerId === authUserData.id &&
-            <div style={{flex: '1'}}><div
+            <div
+
+                style={{flex: '1'}}><NavLink to={'/projects'}
                 className={`${styles.backBtn} + ${colorStyles.backBtn}`}
-                onClick={onBackClick}
             >
                 <span
                     className={`${styles.icon} + ${colorStyles.icon}`}
                     title={!isBackLabel ? labels.backToProjects : ''}
                 ><FiIcons.FiChevronLeft/></span>
                 {isBackLabel && <span className={styles.backBtnLabel}>{labels.backToProjects}</span>}
-            </div></div>}
+            </NavLink></div>}
 
 
             <div

@@ -1,7 +1,7 @@
 import React, {FC, memo, useEffect, useState} from 'react'
 import {docsLabels, DocsLabelsType} from './docsLabels'
 import styles from './Docs.module.css'
-import {useAppDispatch, useAppSelector} from '../../redux/hooks/redux'
+import {useAppSelector} from '../../redux/hooks/redux'
 import CodeBlock from '../../components/docs/CodeBlock/CodeBlock'
 import Navbar from '../../components/docs/Navbar/Navbar'
 import {codeBlocks} from './code'
@@ -17,7 +17,6 @@ const Docs: FC = () => {
 
     const colorStyles = require(`./Docs${theme}.module.css`)
     const labels: DocsLabelsType = docsLabels[language]
-    const dispatch = useAppDispatch()
     const {width} = useWindowDimensions()
 
     const borderlineWidth = 1000
@@ -62,8 +61,8 @@ const Docs: FC = () => {
             <div className={styles.content}>
 
                 <div className={styles.logos}>
-                    <a href='https://github.com/hemae/field-database'><img src={gitHubLogo} alt=''/></a>
-                    <a href='https://www.npmjs.com/package/field-database'><img src={npmLogo} alt=''/></a>
+                    <a href='https://github.com/hemae/field-database' target='_blank'><img src={gitHubLogo} alt=''/></a>
+                    <a href='https://www.npmjs.com/package/field-database' target='_blank'><img src={npmLogo} alt=''/></a>
                 </div>
 
                 <div className={`${styles.oneBlock} + ${colorStyles.oneBlock}`}>

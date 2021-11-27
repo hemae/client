@@ -29,6 +29,8 @@
     margin-right: 10px;
     cursor: pointer;
     width: max-content;
+    text-decoration: none;
+    color: unset;
 }
 
 .icon {

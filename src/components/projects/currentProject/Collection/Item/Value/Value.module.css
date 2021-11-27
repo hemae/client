@@ -17,6 +17,7 @@
     margin-left: 8px;
     display: flex;
     flex-direction: column;
+    transition: background-color 250ms;
 }
 
 .objectHeader {
@@ -24,11 +25,13 @@
     cursor: pointer;
     display: flex;
     transition: color 250ms;
+    width: max-content;
 }
 
 .record {
     display: flex;
 }
+
 
 .record > div {
     margin-top: 2px;
