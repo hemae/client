@@ -4,6 +4,7 @@ import collectionsAPI, {
     CollectionsApiOptionsType,
     CollectionsAxiosResponseType
 } from '../../../api/collectionsAPI'
+import {authSlice} from '../auth/authSlice'
 
 
 type collectionNamesOptionsType = {
@@ -18,6 +19,9 @@ export const collectionNamesHandler = createAsyncThunk(
             const response = await options.apiEndpoint(options.payload)
             return response.data.collectionNames
         } catch (e: any) {
+            if (e.response.data.message === 'Authorization error') {
+                return thunkAPI.dispatch(authSlice.actions.logout())
+            }
             return thunkAPI.rejectWithValue(e.message)
         }
     }
@@ -50,6 +54,9 @@ export const collectionHandler = createAsyncThunk(
             const response = await options.apiEndpoint(options.payload)
             return {data: response.data, collectionName: options.payload.data.collectionName}
         } catch (e: any) {
+            if (e.response.data.message === 'Authorization error') {
+                return thunkAPI.dispatch(authSlice.actions.logout())
+            }
             return thunkAPI.rejectWithValue(e.message)
         }
     }

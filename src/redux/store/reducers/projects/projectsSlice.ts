@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {Project} from '../../../models/Project'
-import {getProject, projectHandlerThunkCreator, projectsHandlerThunkCreator} from './projectsThunkCreators'
+import {projectHandlerThunkCreator, projectsHandlerThunkCreator} from './projectsThunkCreators'
 
 
 type ProjectsStateType = {

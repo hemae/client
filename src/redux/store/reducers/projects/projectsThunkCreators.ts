@@ -4,6 +4,7 @@ import projectsAPI, {
     ProjectsAxiosResponseType
 } from '../../../api/projectsAPI'
 import {createAsyncThunk} from '@reduxjs/toolkit'
+import {authSlice} from '../auth/authSlice'
 
 
 type ProjectsHandlerThunkCreatorOptionsType = {
@@ -18,6 +19,9 @@ export const projectsHandlerThunkCreator = createAsyncThunk(
             const response = await options.apiEndpoint(options.payload)
             return response.data.projects
         } catch (e: any) {
+            if (e.response.data.message === 'Authorization error') {
+                return thunkAPI.dispatch(authSlice.actions.logout())
+            }
             return thunkAPI.rejectWithValue(e.message)
         }
     }
@@ -56,6 +60,9 @@ export const projectHandlerThunkCreator = createAsyncThunk(
             const response = await options.apiEndpoint(options.payload)
             return response.data.project
         } catch (e: any) {
+            if (e.response.data.message === 'Authorization error') {
+                return thunkAPI.dispatch(authSlice.actions.logout())
+            }
             return thunkAPI.rejectWithValue(e.response.data.message)
         }
     }
