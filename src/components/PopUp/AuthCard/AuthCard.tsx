@@ -30,8 +30,15 @@ const AuthCard: FC<AuthCardPropsType> = ({type}) => {
     const labels: AuthCardLabelsType = authCardLabels[language]
 
     useEffect(() => {
-        if (notice === 'Success') {
+        return () => {
+            dispatch(authSlice.actions.setError(''))
             dispatch(authSlice.actions.setNotice(''))
+        }
+    }, [])
+
+    useEffect(() => {
+        if (notice === 'Success') {
+            // dispatch(authSlice.actions.setNotice(''))
             dispatch(popUpSlice.actions.closePopUp())
         }
     }, [notice])
