@@ -62,6 +62,7 @@ const ObjectValue: FC<ObjectPropsType> = (props) => {
 
     const onObjectClick = (): void => {
         setLocalIsOpened(!localIsOpened)
+        setIsBracketsHover(false)
     }
 
     const headerLabel: string = kind === 'Array'
