@@ -1,0 +1,11 @@
+.pagination {
+    color: black;
+}
+
+.arrow {
+    color: #838383;
+}
+
+.arrow:hover {
+    color: #9c9cf8;
+}

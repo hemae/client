@@ -1,0 +1,47 @@
+.key {
+    color: white;
+}
+
+.string {
+    color: forestgreen;
+}
+
+.number {
+    color: #0176b7;
+}
+
+.bigint {
+    color: #0021a9;
+}
+
+.boolean {
+    color: #f38b00;
+}
+
+.symbol {
+    color: #44b900;
+}
+
+.undefined {
+    color: #b90000;
+}
+
+.null {
+    color: #676767;
+}
+
+.object {
+    color: #f38b00;
+}
+
+.objectHeader {
+    color: #f38b00;
+}
+
+.objectHeader:hover {
+    color: #8c5100;
+}
+
+.keyNumber {
+    color: white;
+}

@@ -1,45 +1,37 @@
-import React, {FC, lazy, useEffect} from 'react'
-import {withRoutesContextProps} from './routesHOC'
+import React, {FC, lazy, memo} from 'react'
 import {withSuspense} from '../../commonHOCs/withSuspense'
-import {RoutesContextPropsType} from './RoutesTypes'
 import {Redirect, Route, Switch} from 'react-router-dom'
-import Header from '../../components/Header/Header'
-import styles from './Routes.module.css'
+import {useAppSelector} from '../../redux/hooks/redux'
 
 const Home: FC = lazy(() => import('../../pages/Home/Home'))
-const Projects: FC = lazy(() => import('../../pages/Projects/Projects'))
+const Projects: FC = lazy(() => import('../../pages/Projects/MyProjects'))
+const CurrentProject: FC = lazy(() => import('../../pages/CurrentProject/CurrentProject'))
+const Docs: FC = lazy(() => import('../../pages/Docs/Docs'))
 
-const RoutesComponent: FC<RoutesContextPropsType> = ({
-                                                         isAuthenticated
-                                                     }) => {
+const Routes: FC = () => {
+
+    const {isAuthenticated} = useAppSelector(state => state.authReducer)
 
     if (isAuthenticated) {
         return (
-            <>
-                <Header/>
-                <div className={styles.container}>
-                    <Switch>
-                        <Route path='/' exact component={withSuspense(Home)}/>
-                        <Route path='/projects' component={withSuspense(Projects)}/>
-                        <Redirect to='/'/>
-                    </Switch>
-                </div>
-            </>
-
+            <Switch>
+                <Route path='/' exact component={withSuspense(Home)}/>
+                <Route path='/projects' exact component={withSuspense(Projects)}/>
+                <Route path='/projects/:projectId' component={withSuspense(CurrentProject)}/>
+                <Route path='/docs' exact component={withSuspense(Docs)}/>
+                <Redirect to='/'/>
+            </Switch>
         )
     }
 
     return (
-        <>
-            <Header/>
-            <div className={styles.container}>
-                <Switch>
-                    <Route path='/' exact component={withSuspense(Home)}/>
-                    <Redirect to='/'/>
-                </Switch>
-            </div>
-        </>
+        <Switch>
+            <Route path='/' exact component={withSuspense(Home)}/>
+            <Route path='/docs' exact component={withSuspense(Docs)}/>
+            <Route path='/projects/:projectId' component={withSuspense(CurrentProject)}/>
+            <Redirect to='/'/>
+        </Switch>
     )
 }
 
-export default withRoutesContextProps(RoutesComponent) as FC<{}>
+export default memo(Routes)

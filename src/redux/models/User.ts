@@ -1,4 +1,7 @@
+import {UniqueId} from './common'
+
+
 export type User = {
-    id: string
+    id: UniqueId
     login: string
 }

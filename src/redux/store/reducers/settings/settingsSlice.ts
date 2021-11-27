@@ -18,9 +18,11 @@ export const settingsSlice = createSlice({
     reducers: {
         setTheme(state: SettingsStateType, action: PayloadAction<ThemeType>) {
             state.theme = action.payload
+            localStorage.setItem('theme', action.payload)
         },
         setLanguage(state: SettingsStateType, action: PayloadAction<LanguageType>) {
             state.language = action.payload
+            localStorage.setItem('language', action.payload)
         }
     }
 })

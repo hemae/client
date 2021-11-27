@@ -1,13 +1,17 @@
 export const headerLabels = {
     ru: {
-        home: 'Главная',
-        projects: 'Мои проекты',
-        signUp: 'Регистрация'
+        '/': 'Главная',
+        '/projects': 'Мои проекты',
+        '/docs': 'Документация',
+        signUp: 'Регистрация',
+        signAs: 'Вы вошли как'
     },
     en: {
-        home: 'Home',
-        projects: 'My Projects',
-        signUp: 'Sign up'
+        '/': 'Home',
+        '/projects': 'My Projects',
+        '/docs': 'Docs',
+        signUp: 'Sign up',
+        signAs: 'Signed in as'
     }
 }
 

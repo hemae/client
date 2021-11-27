@@ -1,0 +1,29 @@
+.collectionName {
+    width: calc(100% - 10px - 10px);
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 250ms;
+    border-radius: 10px;
+    margin: 3px 0;
+}
+
+.collectionName.active {
+    cursor: default;
+}
+
+.label {
+    padding: 8px 0;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+.deleteBtn {
+    cursor: pointer;
+    margin-top: 5px;
+    font-size: 22px;
+    transition: color 250ms;
+}
+

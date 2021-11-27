@@ -1,0 +1,22 @@
+.inputPopUpWrapper input {
+    width: 200px;
+    padding: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid;
+    background: none;
+    font-size: 18px;
+    outline: none;
+    -moz-appearance: none;
+    border-color: #a6a6a6;
+    transition: all 150ms;
+}
+
+.inputPopUpWrapper input:focus {
+    border-color: #b7b7ff;
+}
+
+.inputPopUpWrapper input::placeholder {
+    color: #a6a6a6;
+}

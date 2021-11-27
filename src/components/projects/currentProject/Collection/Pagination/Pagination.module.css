@@ -1,0 +1,17 @@
+.pagination {
+    display: flex;
+    font-size: 22px;
+    cursor: default;
+}
+
+.label {
+    min-width: 30px;
+}
+
+.arrow {
+    width: 22px;
+    cursor: pointer;
+    font-size: 26px;
+    transition: color 250ms;
+}
+

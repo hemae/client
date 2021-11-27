@@ -1,0 +1,1 @@
+export const APP_SIDE_PADDING = 40

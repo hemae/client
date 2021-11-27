@@ -2,6 +2,8 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {signIn, signUp} from './authThunkCreators'
 import {User} from '../../../models/User'
 import {removeStorageAppUserData, setStorageAppUserData} from './localStorageHelpers'
+import {UniqueId} from '../../../models/common'
+import {LogInResponsePayloadType} from '../../../api/authAPI'
 
 
 type AuthStateType = {
@@ -26,7 +28,7 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        login(state: AuthStateType, action: PayloadAction<{ user: {id: string, login: string}, token: string }>) {
+        login(state: AuthStateType, action: PayloadAction<{ user: {id: UniqueId, login: string}, token: string }>) {
             state.isAuthenticated = true
             state.token = action.payload.token
             state.authUserData = action.payload.user
@@ -36,6 +38,12 @@ export const authSlice = createSlice({
             removeStorageAppUserData()
             state.token = null
             state.authUserData = null
+        },
+        setError(state: AuthStateType, action: PayloadAction<string>) {
+            state.error = action.payload
+        },
+        setNotice(state: AuthStateType, action: PayloadAction<string>) {
+            state.notice = action.payload
         }
     },
     extraReducers: {
@@ -56,12 +64,13 @@ export const authSlice = createSlice({
         [signIn.pending.type]: (state: AuthStateType) => {
             state.isLoading = true
         },
-        [signIn.fulfilled.type]: (state: AuthStateType, action: PayloadAction<{ user: {id: string, login: string}, token: string }>) => {
+        [signIn.fulfilled.type]: (state: AuthStateType, action: PayloadAction<LogInResponsePayloadType>) => {
             state.error = ''
             setStorageAppUserData({token: action.payload.token, authUserData: action.payload.user})
             state.isAuthenticated = true
             state.token = action.payload.token
             state.authUserData = action.payload.user
+            state.notice = action.payload.message
             state.isLoading = false
         },
         [signIn.rejected.type]: (state: AuthStateType, action: PayloadAction<string>) => {

@@ -1,0 +1,25 @@
+.popUpWrapper {
+    background-color: #262626;
+    box-shadow: 0 0 12px #000000;
+    color: #ffffff;
+}
+
+.btn {
+    background-color: #262626;
+    color: #a6a6a6;
+}
+
+.btn:hover {
+    color: #a5a5fd;
+    background-color: #3a3a3a;
+}
+
+.btn.disabled {
+    background-color: #4f4e4e;
+    color: #bbbbbb;
+}
+
+.btn.disabled:hover {
+    background-color: #4f4e4e;
+    color: #bbbbbb;
+}

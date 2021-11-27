@@ -1,24 +1,37 @@
-import React, {FC} from 'react'
+import React, {FC, memo} from 'react'
 import styles from './ItemWrapper.module.css'
-import {ItemWrapperContextPropsType, ItemWrapperExternalPropsType} from './ItemWrapperTypes'
-import {compose} from 'redux'
-import {withThemeFC} from '../../../redux/settings/settingsHOCs'
+import {useAppSelector} from '../../../redux/hooks/redux'
 
 
-const ItemWrapperComponent: FC<ItemWrapperContextPropsType & ItemWrapperExternalPropsType> = ({
-                                                                                                  theme,
-                                                                                                  child,
-                                                                                                  title = '',
-                                                                                                  width = 'auto',
-                                                                                                  height = 'auto',
-                                                                                                  padding = '10px',
-                                                                                                  borderRadius = '10px',
-                                                                                                  margin = '10px',
-                                                                                                  cursor = 'pointer',
-                                                                                                  opacity = '1',
-                                                                                                  onClickHandler = () => undefined
-                                                                                              }) => {
+type ItemWrapperPropsType = {
+    child: JSX.Element
+    onClickHandler?: () => void
+    title?: string
+    width?: string
+    height?: string
+    padding?: string
+    borderRadius?: string
+    margin?: string
+    opacity?: string
+    cursor?: 'pointer' | 'default' | 'progress'
+}
 
+const ItemWrapper: FC<ItemWrapperPropsType> = (props) => {
+
+    const {
+        child,
+        title = '',
+        width = 'auto',
+        height = 'auto',
+        padding = '0px',
+        borderRadius = '10px',
+        margin = '10px',
+        cursor = 'pointer',
+        opacity = '1',
+        onClickHandler = () => undefined
+    } = props
+
+    const {theme} = useAppSelector(state => state.settingsReducer)
     const colorStyles = require(`./ItemWrapper${theme}.module.css`)
 
     const itemWrapperStyles = {
@@ -41,6 +54,4 @@ const ItemWrapperComponent: FC<ItemWrapperContextPropsType & ItemWrapperExternal
     )
 }
 
-export default compose<FC<ItemWrapperExternalPropsType>>(
-    withThemeFC
-)(ItemWrapperComponent)
+export default memo<ItemWrapperPropsType>(ItemWrapper)

@@ -1,0 +1,62 @@
+.header {
+    padding-top: 5px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    cursor: default;
+    border-bottom: 1px solid;
+    overflow-x: auto;
+}
+
+.projectName {
+    flex: 1;
+    font-weight: bold;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.backBtn {
+    font-size: 16px;
+    transition: color 250ms;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 10px;
+    cursor: pointer;
+    width: max-content;
+}
+
+.icon {
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+.backBtnLabel {
+    white-space: nowrap;
+}
+
+.projectId {
+    flex: 1;
+    font-size: 22px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 4px;
+}
+
+.projectIdLabel {
+    margin-left: 10px;
+}
+
+.id {
+    margin-left: 5px;
+    white-space: nowrap;
+    cursor: copy;
+    transition: color 250ms;
+    margin-right: 10px;
+}

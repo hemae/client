@@ -1,0 +1,16 @@
+.item {
+    background-color: #313131;
+}
+
+.item:hover {
+    background-color: #3a3a3a;
+    box-shadow: 0 0 1px black;
+}
+
+.deleteBtn {
+    color: #4b4b4b;
+}
+
+.deleteBtn:hover {
+    color: #fa9d9d;
+}

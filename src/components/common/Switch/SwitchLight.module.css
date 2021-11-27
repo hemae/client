@@ -5,4 +5,5 @@
 
 .toggle {
     background-color: #b2d3b4;
+    transition: all 250ms;
 }

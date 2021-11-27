@@ -30,16 +30,16 @@ class AxiosApi {
         this._contentType = options.contentType ? options.contentType : 'application/json'
     }
 
-    public getPromiseResponse({method, token, path, data = {}}: GetPromiseAxiosResponseType): Promise<AxiosResponse> {
+    public getPromiseResponse<ResponseType>({method, token, path, data = {}}: GetPromiseAxiosResponseType): Promise<AxiosResponse<ResponseType>> {
         return method === 'get' || method === 'delete'
             ? AxiosApi._instanceCreator({
                 token,
                 contentType: this._contentType
-            })[method](`${this._basePath}${path}`)
+            })[method]<ResponseType>(`${this._basePath}${path}`)
             : AxiosApi._instanceCreator({
                 token,
                 contentType: this._contentType
-            })[method](`${this._basePath}${path}`, JSON.stringify(data))
+            })[method]<ResponseType>(`${this._basePath}${path}`, JSON.stringify(data))
     }
 
     static _instanceCreator({token, contentType}: InstanceCreatorOptionsType): AxiosInstance {

@@ -1,0 +1,31 @@
+.container {
+    color: #d0d0d0;
+}
+
+.container:hover {
+    color: #8dd992;
+}
+
+.container.active {
+    color: #9c9cf8;
+}
+
+.container.active:hover {
+    color: #8dd992;
+}
+
+.chevron {
+    color: #d0d0d0;
+}
+
+.headerContent > a {
+    color: #ffffff;
+}
+
+.headerContent > a:hover {
+    color: #8dd992;
+}
+
+
+
+

@@ -1,0 +1,11 @@
+.toolsBtn {
+    color: #a6a6a6;
+}
+
+.toolsBtn.delete:hover {
+    color: #fa9d9d;
+}
+
+.toolsBtn.rename:hover {
+    color: #b7b7ff;
+}

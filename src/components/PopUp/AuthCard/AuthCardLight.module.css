@@ -1,0 +1,34 @@
+.authCard {
+    background-color: #f3f3f3;
+    box-shadow: 0 0 2px #a5a5a5;
+}
+
+.authCard hr {
+    background-color: #8dd992;
+    border-color: #8dd992;
+}
+
+.header h1 {
+    color: #8dd992;
+}
+
+.form input {
+    color: #4d4d4d;
+    border-color: #cecece;
+}
+
+.form input:focus {
+    border-color: #b7b7ff;
+}
+
+.form input::placeholder {
+    color: #cbcbcb;
+}
+
+.closeBtn {
+    color: #c0c0c0;
+}
+
+.closeBtn:hover {
+    color: #fa9d9d;
+}

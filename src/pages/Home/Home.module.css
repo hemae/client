@@ -1,17 +1,17 @@
 .home {
-    height: calc(100vh - 60px - 20px - 50px);
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .welcomeContainer {
-    border-radius: 20px;
+    width: 100%;
+    height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 30px;
     transition: all 2000ms;
 }
 
@@ -19,6 +19,9 @@
     font-size: 50px;
     font-weight: bold;
     opacity: 0;
+    text-align: center;
+    cursor: default;
+    transform: scale(0.9);
     transition: all 3000ms;
 }
 
@@ -26,15 +29,30 @@
     font-size: 50px;
     font-weight: bold;
     opacity: 1;
+    transform: scale(1);
 }
 
 .slogan {
+    margin-bottom: 30px;
     font-size: 18px;
     opacity: 0;
+    cursor: default;
+    text-align: center;
+    transform: scale(0.8);
     transition: all 5000ms;
 }
 
 .slogan.active {
     font-size: 18px;
     opacity: 1;
+    transform: scale(1);
 }
+
+.buttons {
+    display: flex;
+}
+
+.buttons > div {
+    margin: 10px;
+}
+

@@ -1,0 +1,23 @@
+.collectionName.active {
+    background-color: #313131;
+}
+
+.collectionName.active:hover {
+    background-color: #313131;
+}
+
+.collectionName:hover {
+    background-color: #3a3a3a;
+}
+
+.label {
+    color: white;
+}
+
+.deleteBtn {
+    color: #4b4b4b;
+}
+
+.deleteBtn:hover {
+    color: #fa9d9d;
+}

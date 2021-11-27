@@ -1,0 +1,86 @@
+.docs {
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.logos img {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    border-radius: 25px;
+    background-color: white;
+    transition: all 250ms;
+}
+
+.logos img:hover {
+    box-shadow: 0 0 10px #8dd992;
+}
+
+.content {
+    padding: 40px;
+    overflow-y: auto;
+    height: calc(100vh - 160px);
+    flex: 3;
+}
+
+.oneBlock > h1 {
+    padding-bottom: 20px;
+    border-bottom: 2px solid;
+}
+
+.twoBlock > h2 {
+    padding-bottom: 15px;
+    border-bottom: 1px solid;
+}
+
+.twoBlock {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.twoBlock > span {
+    font-size: 18px;
+}
+
+.threeBlock {
+    display: flex;
+    flex-direction: column;
+}
+
+.threeBlock > h3 {
+    margin-top: 40px;
+}
+
+.navbar {
+    flex: 1;
+    border-right: 1px solid;
+    padding: 20px 20px 20px 0;
+}
+
+.navbarHidden {
+    position: absolute;
+    width: 310px;
+    padding: 20px 20px 20px 20px;
+    top: 0;
+    min-height: max-content;
+    left: -1000px;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    border-radius: 0 0 20px 0;
+    transition: all 250ms;
+}
+
+.navbarHidden.shown {
+    left: 0;
+}
+
+.showList {
+    margin-top: 8px;
+    font-size: 40px;
+    cursor: pointer;
+    transition: color 250ms;
+    height: max-content;
+}
+

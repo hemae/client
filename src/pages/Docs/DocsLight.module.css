@@ -1,0 +1,30 @@
+.docs {
+    color: #424242;
+}
+
+.navbarHidden {
+    background-color: white;
+    border-color: #8dd992;
+}
+
+.navbar {
+    border-color: #8dd992;
+}
+
+.showList {
+    color: #e3e3e3;
+}
+
+.showList:hover {
+    color: #b7b7ff;
+}
+
+.oneBlock > h1 {
+    color: #707070;
+    border-color: #8dd992;
+}
+
+.twoBlock > h2 {
+    color: #707070;
+    border-color: #8dd992;
+}

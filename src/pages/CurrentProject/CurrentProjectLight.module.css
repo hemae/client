@@ -1,0 +1,25 @@
+.collectionListHidden {
+    background-color: white;
+    border-color: #8dd992;
+}
+
+.refresh {
+    color: black;
+}
+
+.noAccess {
+    color: #ff0000;
+}
+
+.collectionList {
+    border-color: #8dd992;
+}
+
+.showList {
+    color: #e3e3e3;
+}
+
+.showList:hover {
+    color: #b7b7ff;
+}
+

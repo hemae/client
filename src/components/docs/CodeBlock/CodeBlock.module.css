@@ -1,0 +1,24 @@
+.codeContainer {
+    position: relative;
+}
+
+.copyBtn {
+    position: absolute;
+    top: 17px;
+    right: 3px;
+    opacity: 0;
+    transition: opacity 250ms;
+    padding: 2px 2px 0 1px;
+    font-size: 22px;
+    cursor: pointer;
+    border: 2px solid;
+    border-radius: 6px;
+}
+
+.copyBtn.shown {
+    opacity: 1;
+}
+
+
+
+

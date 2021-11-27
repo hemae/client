@@ -7,7 +7,7 @@
 }
 
 .toggle {
-
+    transition: all 250ms;
 }
 
 .icon {

@@ -1,0 +1,50 @@
+.currentProject {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.refresh {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.collectionList {
+    flex: 1;
+    border-right: 1px solid;
+    padding: 20px 20px 20px 0;
+}
+
+.collectionListHidden {
+    position: absolute;
+    width: 310px;
+    padding: 20px 20px 20px 20px;
+    top: 0;
+    min-height: max-content;
+    left: -1000px;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    border-radius: 0 0 20px 0;
+    transition: all 250ms;
+}
+
+.collectionListHidden.shown {
+    left: 0;
+}
+
+.showList {
+    margin-top: 8px;
+    font-size: 40px;
+    cursor: pointer;
+    transition: color 250ms;
+    height: max-content;
+}

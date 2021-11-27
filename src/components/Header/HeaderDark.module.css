@@ -11,6 +11,7 @@
 }
 
 .link.active {
+    color: #9c9cf8;
     border-color: #8dd992;
 }
 
@@ -20,4 +21,20 @@
 
 .signUp:hover {
     color: #9c9cf8;
+}
+
+.toolsContainer {
+    background-color: #262626;
+}
+
+.showTools {
+    color: #c0c0c0;
+}
+
+.showTools:hover {
+    color: #9c9cf8;
+}
+
+.signAs {
+    color: white;
 }

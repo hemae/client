@@ -1,0 +1,17 @@
+.project {
+    transition: all 150ms;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.project span {
+    text-align: center;
+    width: 100px;
+}
+
+.icon {
+    font-size: 60px;
+}

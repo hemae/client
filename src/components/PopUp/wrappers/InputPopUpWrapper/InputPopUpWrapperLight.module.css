@@ -1,0 +1,12 @@
+.inputPopUpWrapper input {
+    border-color: #a6a6a6;
+    color: #626262;
+}
+
+.inputPopUpWrapper input:focus {
+    border-color: #b7b7ff;
+}
+
+.inputPopUpWrapper input::placeholder {
+    color: #a6a6a6;
+}

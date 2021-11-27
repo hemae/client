@@ -1,0 +1,36 @@
+.value {
+    margin-left: 8px;
+    font-weight: bold;
+    display: flex;
+    cursor: default;
+}
+
+.keyNumber {
+    width: 15px;
+    font-weight: initial;
+    margin-right: 5px;
+    cursor: default;
+    text-align: right;
+}
+
+.object {
+    margin-left: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.objectHeader {
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    transition: color 250ms;
+}
+
+.record {
+    display: flex;
+}
+
+.record > div {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}

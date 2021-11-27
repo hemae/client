@@ -1,0 +1,17 @@
+.header {
+    color: white;
+}
+
+.count {
+    color: white;
+}
+
+.apiBtn {
+    color: #b7b7ff;
+    border-color: #b7b7ff;
+}
+
+.apiBtn:hover {
+    color: #9c9cf8;
+    border-color: #9c9cf8;
+}

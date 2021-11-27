@@ -1,19 +1,27 @@
-import React, {FC} from 'react'
+import React, {FC, memo} from 'react'
 import styles from './Button.module.css'
-import {ButtonContextPropsType, ButtonExternalPropsType} from './ButtonTypes'
-import {compose} from 'redux'
-import {withThemeFC} from '../../../redux/settings/settingsHOCs'
+import {useAppSelector} from '../../../redux/hooks/redux'
 
 
-const ButtonComponent: FC<ButtonContextPropsType & ButtonExternalPropsType> = ({
-                                                                                   label,
-                                                                                   onClickHandler,
-                                                                                   icon,
-                                                                                   disabled,
-                                                                                   color,
-                                                                                   theme
-                                                                               }) => {
+type ButtonPropsType = {
+    label: string
+    icon?: JSX.Element
+    disabled?: boolean
+    color?: string
+    backgroundColor?: string
+    onClickHandler?: () => void
+}
 
+const Button: FC<ButtonPropsType> = ({
+                                         label,
+                                         onClickHandler,
+                                         icon,
+                                         disabled,
+                                         color,
+                                         backgroundColor
+                                     }) => {
+
+    const {theme} = useAppSelector(state => state.settingsReducer)
     const colorStyles = require(`./Button${theme}.module.css`)
 
     return (
@@ -22,6 +30,7 @@ const ButtonComponent: FC<ButtonContextPropsType & ButtonExternalPropsType> = ({
             onClick={onClickHandler}
             style={{
                 color,
+                backgroundColor,
                 boxShadow: `0 0 8px ${color}`
             }}
         >
@@ -32,6 +41,4 @@ const ButtonComponent: FC<ButtonContextPropsType & ButtonExternalPropsType> = ({
 }
 
 
-export const Button: FC<ButtonExternalPropsType> = compose<FC<ButtonExternalPropsType>>(
-    withThemeFC
-)(ButtonComponent)
+export default memo<ButtonPropsType>(Button)

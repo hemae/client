@@ -1,4 +1,4 @@
-import authAPI, {AuthApiOptionsType, SignUpAxiosResponseType, SignInAxiosResponseType} from '../../../api/authAPI'
+import authAPI, {AuthApiOptionsType} from '../../../api/authAPI'
 import {createAsyncThunk} from '@reduxjs/toolkit'
 import {User} from '../../../models/User'
 import {Dispatch} from '../../store'
@@ -7,24 +7,24 @@ import {authSlice} from './authSlice'
 
 export const signUp = createAsyncThunk(
     'signUp',
-    async (data: AuthApiOptionsType, thunkAPI) => {
+    async (userData: AuthApiOptionsType, thunkAPI) => {
         try {
-            const response: SignUpAxiosResponseType = await authAPI.signUp(data)
+            const response = await authAPI.signUp(userData)
             return response.data.message
         } catch (e: any) {
-            return thunkAPI.rejectWithValue(e.message)
+            return thunkAPI.rejectWithValue(e.response.data.message)
         }
     }
 )
 
 export const signIn = createAsyncThunk(
     'signIn',
-    async (data: AuthApiOptionsType, thunkAPI) => {
+    async (userData: AuthApiOptionsType, thunkAPI) => {
         try {
-            const response: SignInAxiosResponseType = await authAPI.signIn(data)
+            const response = await authAPI.signIn(userData)
             return response.data
         } catch (e: any) {
-            return thunkAPI.rejectWithValue(e.message)
+            return thunkAPI.rejectWithValue(e.response.data.message)
         }
     }
 )

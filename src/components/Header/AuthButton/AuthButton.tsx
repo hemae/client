@@ -1,43 +1,41 @@
-import React, {FC, useState} from 'react'
+import React, {FC, memo} from 'react'
 import styles from './AuthButton.module.css'
-import {withAuthButtonContextProps} from './authButtonHOC'
-import {AuthButtonContextPropsType, AuthButtonExternalPropsType} from './AuthButtonTypes'
 import {authButtonLabels, AuthButtonLabelsType} from './authButtonLabels'
-import AuthCard from '../../AuthCard/AuthCard'
+import {useAppDispatch, useAppSelector} from '../../../redux/hooks/redux'
+import {authSlice} from '../../../redux/store/reducers/auth/authSlice'
+import {popUpSlice} from '../../../redux/store/reducers/popUp/popUpSlice'
 
 
-const AuthButton: FC<AuthButtonContextPropsType & AuthButtonExternalPropsType> = ({
-                                                                                      language,
-                                                                                      theme,
-                                                                                      logout,
-                                                                                      isAuthenticated
-                                                                                  }) => {
+const AuthButton: FC = () => {
+
+    const {theme, language} = useAppSelector(state => state.settingsReducer)
+    const {isAuthenticated} = useAppSelector(state => state.authReducer)
+    const dispatch = useAppDispatch()
 
     const colorStyles = require(`./AuthButton${theme}.module.css`)
     const labels: AuthButtonLabelsType = authButtonLabels[language]
 
-    const [isAuthCardShown, setIsAuthCardShown] = useState<boolean>(false)
-
     const onAuthButtonClick = (): void => {
         if (isAuthenticated) {
-            logout()
+            dispatch(authSlice.actions.logout())
         } else {
-            setIsAuthCardShown(true)
+            dispatch(popUpSlice.actions.showPopUp({
+                renderingComponent: 'AuthCard',
+                props: {
+                    type: 'signIn'
+                }
+            }))
         }
     }
 
     return (
-        <>
-            <div className={`${styles.authButton} + ${colorStyles.authButton}`}
-                 onClick={onAuthButtonClick}
-            >
-                {isAuthenticated ? labels.signOut : labels.signIn}
-            </div>
-
-            {isAuthCardShown && <AuthCard isShown={isAuthCardShown} type={'signIn'} closeCard={() => setIsAuthCardShown(false)}/>}
-        </>
-
+        <div
+            className={`${styles.authButton} + ${colorStyles.authButton}`}
+            onClick={onAuthButtonClick}
+        >
+            {isAuthenticated ? labels.signOut : labels.signIn}
+        </div>
     )
 }
 
-export default withAuthButtonContextProps(AuthButton) as FC<AuthButtonExternalPropsType>
+export default memo(AuthButton)

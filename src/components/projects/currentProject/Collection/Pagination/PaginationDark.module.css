@@ -1,0 +1,11 @@
+.pagination {
+    color: white;
+}
+
+.arrow {
+    color: #d0d0d0;
+}
+
+.arrow:hover {
+    color: #9c9cf8;
+}

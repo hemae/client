@@ -1,0 +1,25 @@
+.header {
+    color: black;
+    border-color: #8dd992;
+}
+
+.projectName {
+    color: #8dd992;
+}
+
+.icon {
+    color: #6e6e6e;
+}
+
+.icon:hover {
+    color: #9c9cf8;
+}
+
+.backBtn:hover {
+    color: #9c9cf8;
+}
+
+.id:hover {
+    color: #8dd992;
+}
+

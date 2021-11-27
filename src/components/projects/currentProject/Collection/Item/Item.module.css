@@ -1,0 +1,22 @@
+.item {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    width: calc(100% - 20px - 20px);
+    padding: 20px;
+    transition: all 250ms;
+    position: relative;
+   word-break: break-word;
+}
+
+.deleteBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 22px;
+    transition: color 250ms;
+}
+

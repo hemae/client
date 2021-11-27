@@ -8,5 +8,6 @@
     transition: all 150ms;
     font-weight: bold;
     cursor: pointer;
+    width: max-content;
 }
 
