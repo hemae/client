@@ -11,6 +11,13 @@
     flex-direction: column;
 }
 
+.namesContainer {
+    overflow-y: auto;
+    width: 100%;
+    flex-direction: column;
+    height: calc(100vh - 230px);
+}
+
 .header {
     width: calc(100% - 20px);
     padding: 0 20px 20px 20px;

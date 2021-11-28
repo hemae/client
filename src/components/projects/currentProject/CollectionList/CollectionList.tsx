@@ -37,12 +37,14 @@ const CollectionList: FC = () => {
     return (
         <div className={`${styles.collectionList} + ${colorStyles.collectionList}`}>
             {!!collectionNames.length && <div className={`${styles.header} + ${colorStyles.header}`}>{`${labels.collections} (${collectionNames.length})`}</div>}
-            {!collectionNames.length
-                ? <div className={`${styles.header} + ${colorStyles.header}`}>{labels.noCollections}</div>
-                : collectionNames.map((collectionName, index) => <CollectionName
-                    key={index}
-                    collectionName={collectionName}
-                />)}
+            <div className={styles.namesContainer}>
+                {!collectionNames.length
+                    ? <div className={`${styles.header} + ${colorStyles.header}`}>{labels.noCollections}</div>
+                    : collectionNames.map((collectionName, index) => <CollectionName
+                        key={index}
+                        collectionName={collectionName}
+                    />)}
+            </div>
         </div>
     )
 }
